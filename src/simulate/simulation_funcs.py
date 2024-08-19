@@ -77,8 +77,8 @@ def setup_sim_nomin(system, prmtop, inpcrd, d_ind=0):
 
     integrator = LangevinMiddleIntegrator(300*kelvin, 1/picosecond, 0.004*picoseconds)
 
-    platform = Platform.getPlatformByName('CUDA')
-    properties = {'DeviceIndex': d_ind, 'Precision': 'mixed'}#2
+    platform = Platform.getPlatformByName('OpenCL')
+    properties = {'OpenCLPlatformIndex': d_ind, 'DeviceIndex': d_ind, 'Precision': 'mixed'}
 
     simulation = Simulation(prmtop.topology,
                             system,#posres_sys,
@@ -101,8 +101,8 @@ def setup_sim(system, prmtop, inpcrd, d_ind=0):
     posres_sys = add_backbone_posres(system, inpcrd.positions, prmtop.topology.atoms(), 10)
     integrator = LangevinMiddleIntegrator(5*kelvin, 1/picosecond, 0.004*picoseconds)
 
-    platform = Platform.getPlatformByName('CUDA')
-    properties = {'DeviceIndex': d_ind, 'Precision': 'mixed'}
+    platform = Platform.getPlatformByName('OpenCL')
+    properties = {'OpenCLPlatformIndex': d_ind, 'DeviceIndex': d_ind, 'Precision': 'mixed'}
 
     simulation = Simulation(prmtop.topology,
                             posres_sys,
