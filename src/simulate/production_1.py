@@ -13,7 +13,7 @@ from sys import stdout
 import pandas as pd
 import numpy as np
 from parmed import load_file, unit as u
-from simulation_funcs import *
+from .simulation_funcs import *
 import argparse
 
 def prod1(inpcrd_fil,

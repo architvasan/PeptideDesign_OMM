@@ -21,9 +21,6 @@ def running_eq(inpcrd_fil, prmtop_fil, eq_st, eq_chkpt, d_ind):
     return
 
 
-
-
-
 if __name__ == "__main__": 
     parser = argparse.ArgumentParser()
     
