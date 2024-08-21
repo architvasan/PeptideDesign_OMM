@@ -24,8 +24,18 @@ parser.add_argument('-P',
                     type=str,
                     help='working directory')
 
-parser.add_argument('n',
-                    'numsteps',
+parser.add_argument('-S',
+                    '--structdir',
+                    type=str,
+                    help='directory with structural files')
+
+parser.add_argument('-o',
+                    '--outdir_gen',
+                    type=str,
+                    help='general directory for output replica')
+
+parser.add_argument('-n',
+                    '--numsteps',
                     type=int,
                     required=False,
                     default=100000000,
@@ -33,8 +43,17 @@ parser.add_argument('n',
 
 args = parser.parse_args()
 
+if rank<4:
+    try:
+        os.mkdir(f'{args.PWD}/{args.outdir_gen}')
+    except:
+        pass
+
+comm.barrier()
+
+
 try:
-    os.mkdir(f'{args.PWD}/replica{rank}')
+    os.mkdir(f'{args.PWD}/{args.outdir_gen}/replica{rank}')
 except:
     print(f"replica{rank} already exists probably")
 
@@ -54,16 +73,16 @@ except:
 if args.type_sim=='eq':
     from src.simulate.equilibrate import *
 
-    inpcrd_fil = f'{args.PWD}/struct/inpcrd1'
-    prmtop_fil = f'{args.PWD}/struct/prmtop1'
+    inpcrd_fil = f'{args.PWD}/{args.structdir}/inpcrd1'
+    prmtop_fil = f'{args.PWD}/{args.structdir}/prmtop1'
     try:
-        os.mkdir(f'{args.PWD}/replica{rank}/eq')
+        os.mkdir(f'{args.PWD}/{args.outdir_gen}/replica{rank}/eq')
     except:
         pass
                                            
-    eq_st = f'{args.PWD}/replica{rank}/eq/eq.state'
-    eq_chkpt = f'{args.PWD}/replica{rank}/eq/eq.chk'
-    device = rank%4
+    eq_st = f'{args.PWD}/{args.outdir_gen}/replica{rank}/eq/eq.state'
+    eq_chkpt = f'{args.PWD}/{args.outdir_gen}/replica{rank}/eq/eq.chk'
+    device = f'{rank%4+2}'
     eq_simulation = running_eq(inpcrd_fil,
                                 prmtop_fil,
                                 eq_st,
@@ -73,24 +92,24 @@ if args.type_sim=='eq':
 elif args.type_sim=='prod0':
     from src.simulate.production_0 import *
     try:                                              
-        os.mkdir(f'{args.PWD}/replica{rank}/prod0')
+        os.mkdir(f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod0')
     except:
         pass
 
-    inpcrd_fil = f'{args.PWD}/struct/inpcrd1'
-    prmtop_fil = f'{args.PWD}/struct/prmtop1'
-    device = rank%4
-    eq_chkpt = f'{args.PWD}/replica{rank}/eq/eq.chk'
+    inpcrd_fil = f'{args.PWD}/{args.structdir}/inpcrd1'
+    prmtop_fil = f'{args.PWD}/{args.structdir}/prmtop1'
+    device = f'{rank%4+2}'
+    eq_chkpt = f'{args.PWD}/{args.outdir_gen}/replica{rank}/eq/eq.chk'
     prod_steps = args.numsteps #100000000
-    prod_dcd = f'{args.PWD}/replica{rank}/prod0/prod0.dcd'
-    prod_rst = f'{args.PWD}/replica{rank}/prod0/prod0.rst.chk'
-    prod_chkpt = f'{args.PWD}/replica{rank}/prod0/prod0.chk'
-    prod_st = f'{args.PWD}/replica{rank}/prod0/prod0.state'
-    prod_log = f'{args.PWD}/replica{rank}/prod0/prod0.csv'
+    prod_dcd = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod0/prod0.dcd'
+    prod_rst = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod0/prod0.rst.chk'
+    prod_chkpt = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod0/prod0.chk'
+    prod_st = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod0/prod0.state'
+    prod_log = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod0/prod0.csv'
     
     prod0(inpcrd_fil,
       prmtop_fil,
-      d_ind,
+      device,
       eq_chkpt,
       prod_steps,
       prod_dcd,
@@ -102,24 +121,24 @@ elif args.type_sim=='prod0':
 elif args.type_sim=='prod1':
     from src.simulate.production_1 import *
     try:                                              
-        os.mkdir(f'{args.PWD}/replica{rank}/prod1')
+        os.mkdir(f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod1')
     except:
         pass
 
-    inpcrd_fil = f'{args.PWD}/struct/inpcrd1'
-    prmtop_fil = f'{args.PWD}/struct/prmtop1'
-    device = rank%4
-    eq_chkpt = f'{args.PWD}/replica{rank}/prod0/prod0.rst.chk'
+    inpcrd_fil = f'{args.PWD}/{args.structdir}/inpcrd1'
+    prmtop_fil = f'{args.PWD}/{args.structdir}/prmtop1'
+    device = f'{rank%4+2}'
+    eq_chkpt = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod0/prod0.rst.chk'
     prod_steps = args.numsteps #100000000
-    prod_dcd = f'{args.PWD}/replica{rank}/prod1/prod1.dcd'
-    prod_rst = f'{args.PWD}/replica{rank}/prod1/prod1.rst.chk'
-    prod_chkpt = f'{args.PWD}/replica{rank}/prod1/prod1.chk'
-    prod_st = f'{args.PWD}/replica{rank}/prod1/prod1.state'
-    prod_log = f'{args.PWD}/replica{rank}/prod1/prod1.csv'
+    prod_dcd = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod1/prod1.dcd'
+    prod_rst = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod1/prod1.rst.chk'
+    prod_chkpt = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod1/prod1.chk'
+    prod_st = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod1/prod1.state'
+    prod_log = f'{args.PWD}/{args.outdir_gen}/replica{rank}/prod1/prod1.csv'
     
     prod1(inpcrd_fil,
       prmtop_fil,
-      d_ind,
+      device,
       eq_chkpt,
       prod_steps,
       prod_dcd,
