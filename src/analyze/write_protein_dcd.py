@@ -12,8 +12,7 @@ parser.add_argument('-t',
                     '--traj_inp',
                     type=str,
                     help='trajectory file (dcd format)')
-                                                           
-                                                           
+
 parser.add_argument('-op',
                     '--outpdb',
                     type=str,
