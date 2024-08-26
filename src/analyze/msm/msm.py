@@ -21,7 +21,7 @@ def msm_construct(dtrajs,
                     stationary_distribution_constraint=None
                     )
     
-    trajectory = np.loadtxt(dtrajs).astype(int)
+    trajectory = np.loadtxt(dtrajs).astype(int).T
     msm = msm_estimator.fit(trajectory, lagtime=lag).fetch_model()
     
     np.savetxt(f'{out_tmat}', msm.transition_matrix)
@@ -83,6 +83,8 @@ def pcca_construct(msm,
 
 
 def draw_pccatmat(pcca, imagefil):
+    import networkx as nx
+    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
     threshold = 1e-9
     title = f"PCCA Transition matrix with connectivity threshold {threshold:.0e}"
     G = nx.DiGraph()
@@ -111,24 +113,27 @@ def assign_pccafrmes(dtrajs,
                     metafrmesout,
                     pcca_assignfil='none'):
 
-    dtrajs = np.array([int(d) for d in dtrajs])
+    dtrajs = np.loadtxt(dtrajs)
+    for t in range(len(dtrajs[0])):
+        print(dtrajs[:,t])
+        dtrajs_t = np.array([int(d) for d in dtrajs[:,t]])
 
-    if pcca_assignfil != 'none':
-        pcca_assign = np.loadtxt(pcca_assignfil)
-        pcca_assign = np.array([int(pd) for pd in pcca_assign])
+        if pcca_assignfil != 'none':
+            pcca_assign = np.loadtxt(pcca_assignfil)
+            pcca_assign = np.array([int(pd) for pd in pcca_assign])
 
-    else:
-        pcca_assign = np.array([int(p_as) for p_as in pcca.assignments]).T
+        else:
+            pcca_assign = np.array([int(p_as) for p_as in pcca.assignments]).T
 
-    pcca_clusters = {}
-    pcca_frames = {}
-    
-    for pd in range(int(np.max(pcca_assign))+1):
-        pcca_clusters[pd]=np.where(pcca_assign==pd)[0]
-        pcca_frames[pd]=[]
-        for c in pcca_clusters[pd]:
-            pcca_frames[pd].extend(list(np.where(dtrajs==int(c))[0]))
-        np.savetxt(f'{metafrmesout}_{pd}.dat', pcca_frames[pd], fmt='%i')
+        pcca_clusters = {}
+        pcca_frames = {}
+        
+        for pd in range(int(np.max(pcca_assign))+1):
+            pcca_clusters[pd]=np.where(pcca_assign==pd)[0]
+            pcca_frames[pd]=[]
+            for c in pcca_clusters[pd]:
+                pcca_frames[pd].extend(list(np.where(dtrajs_t==int(c))[0]))
+            np.savetxt(f'{metafrmesout}_{pd}_{t}.dat', pcca_frames[pd], fmt='%i')
     return pcca_clusters, pcca_frames
 
 
@@ -170,6 +175,7 @@ def main(dtrajs,
                     f'{imdir}/tmat_pcca.png')
 
     if assign_pccafrms!='none':
+        import os
         try:
             os.mkdir(f'{outdir}/{assign_pccafrms}')
         except:
@@ -182,6 +188,7 @@ def main(dtrajs,
 
 
 if __name__ == "__main__":
+    import argparse
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-D',
@@ -225,6 +232,13 @@ if __name__ == "__main__":
                         default='none',
                         help='file that has the pcca assignments')
 
+    parser.add_argument('-l',
+                        '--logfile',
+                        type=str,
+                        required=False,
+                        default='none',
+                        help='logfile')
+
     args = parser.parse_args()
 
     try:
@@ -241,7 +255,7 @@ if __name__ == "__main__":
          args.lag,
          args.n_metas,
          args.outdir,
-         args.imdir,
+         #args.imdir,
          args.logfile,
          imdir=args.imdir,
          assign_pccafrms=args.assign_pccafrms, 

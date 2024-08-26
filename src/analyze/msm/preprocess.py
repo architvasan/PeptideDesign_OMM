@@ -94,10 +94,11 @@ def main(datafilelist,
         device = torch.device("cpu")
     torch.set_num_threads(12)
     
-    data = [] 
-    for datafile in datafilelist:
+    data = [np.load(datafilelist[0])] 
+    print(data)
+    for datafile in datafilelist[1:]:
         data_it = np.load(datafile)#"./run-4/selection_runs/selection-0/sd4_projection.npy")
-        data = data.extend([data_it.astype(np.float32)])
+        data.extend([data_it.astype(np.float32)])
     
     dataset = TrajectoriesDataset.from_numpy(1, data)
 
@@ -108,7 +109,7 @@ def main(datafilelist,
                     stationary_distribution_constraint=None
                     )
     
-    lagtimes = np.arange(1, 30, dtype=np.int32)
+    lagtimes = np.arange(1, 300, dtype=np.int32)
     models = [msm_estimator.fit(dtrajs, lagtime=lag).fetch_model() for lag in tqdm(lagtimes)]
     
     ax = plot_implied_timescales(implied_timescales(models))
@@ -135,7 +136,7 @@ def main(datafilelist,
     plt.close()
     
     dtrajs = np.loadtxt(out_dtrajs)
-    dtrajs = dtrajs.astype(np.int32)
+    dtrajs = np.array(dtrajs.astype(np.int32)).T
     bmsms = [BayesianMSM(lagtime=lag).fit_fetch(dtrajs) for lag in tqdm([10, 20, 25, 30, 40, 50])]#, 60, 70, 80, 90, 100])]
     ck_test = bmsms[5].ck_test(bmsms, 6)
     plot_ck_test(ck_test)
@@ -148,6 +149,8 @@ def main(datafilelist,
 if __name__ == "__main__":
     # Define a custom argument type for a list of strings
 
+    import argparse
+    import os
     def list_of_strings(arg):
         return arg.split(',')
 
@@ -192,6 +195,7 @@ if __name__ == "__main__":
     try:
         os.mkdir(f'{args.outdir}')
     except:
+        print(f' cant make {args.outdir}')
         pass
 
     try:
