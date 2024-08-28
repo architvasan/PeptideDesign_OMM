@@ -1,0 +1,303 @@
+log started: Tue Aug 20 18:46:28 2024
+
+Log file: ./struct_esm/logfile_solvate.log
+>                               # Load protein, ligand and water molecules
+>                               protein = loadPDB struct_esm/protein4amber.pdb
+Loading PDB file: ./struct_esm/protein4amber.pdb
+Matching PDB residue names to LEaP variables.
+Mapped residue MET, term: Terminal/beginning, seq. number: 0 to: NMET.
+Mapped residue GLY, term: Terminal/last, seq. number: 306 to: CGLY.
+Mapped residue MET, term: Terminal/beginning, seq. number: 307 to: NMET.
+Mapped residue GLY, term: Terminal/last, seq. number: 592 to: CGLY.
+  total atoms in file: 4567
+  Leap added 4523 missing atoms according to residue templates:
+       4523 H / lone pairs
+> # Build system
+>                                  system = combine {protein}
+  Sequence: default_name
+> savepdb system struct_esm/system.dry.pdb
+Writing pdb file: struct_esm/system.dry.pdb
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+ Converting N-terminal residue name to PDB format: NMET -> MET
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+ Converting C-terminal residue name to PDB format: CGLY -> GLY
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+ Converting N-terminal residue name to PDB format: NMET -> MET
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+ Converting C-terminal residue name to PDB format: CGLY -> GLY
+>                             check system
+Checking 'system'....
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.460 angstroms between nonbonded atoms HD12 and HG3
+-------  .R<LEU 587>.A<HD12 12> and .R<GLU 465>.A<HG3 10>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.391 angstroms between nonbonded atoms HG22 and HZ2
+-------  .R<THR 583>.A<HG22 9> and .R<TRP 467>.A<HZ2 15>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.051 angstroms between nonbonded atoms OE2 and HZ2
+-------  .R<GLU 581>.A<OE2 13> and .R<LYS 433>.A<HZ2 19>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.424 angstroms between nonbonded atoms HG21 and HE1
+-------  .R<THR 580>.A<HG21 8> and .R<TRP 468>.A<HE1 12>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.431 angstroms between nonbonded atoms HG22 and HE1
+-------  .R<THR 580>.A<HG22 9> and .R<TRP 468>.A<HE1 12>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.495 angstroms between nonbonded atoms HG22 and HD22
+-------  .R<VAL 573>.A<HG22 13> and .R<LEU 439>.A<HD22 16>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.394 angstroms between nonbonded atoms HD2 and HG1
+-------  .R<PRO 571>.A<HD2 3> and .R<THR 453>.A<HG1 12>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.388 angstroms between nonbonded atoms HD11 and HD13
+-------  .R<LEU 569>.A<HD11 11> and .R<ILE 480>.A<HD13 17>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 0.991 angstroms between nonbonded atoms HH12 and HG2
+-------  .R<ARG 552>.A<HH12 19> and .R<PRO 529>.A<HG2 6>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.369 angstroms between nonbonded atoms HH12 and HD22
+-------  .R<ARG 536>.A<HH12 19> and .R<ASN 406>.A<HD22 12>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.009 angstroms between nonbonded atoms HB2 and HH21
+-------  .R<LYS 530>.A<HB2 6> and .R<ARG 172>.A<HH21 21>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.447 angstroms between nonbonded atoms HB2 and HD2
+-------  .R<ALA 528>.A<HB2 7> and .R<PRO 523>.A<HD2 3>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.339 angstroms between nonbonded atoms HH21 and OD1
+-------  .R<ARG 452>.A<HH21 21> and .R<ASP 425>.A<OD1 9>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.452 angstroms between nonbonded atoms HG and HD22
+-------  .R<SER 447>.A<HG 9> and .R<ASN 429>.A<HD22 12>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 0.952 angstroms between nonbonded atoms HD2 and HE1
+-------  .R<HIE 440>.A<HD2 15> and .R<TYR 431>.A<HE1 12>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.443 angstroms between nonbonded atoms NE2 and HD22
+-------  .R<GLN 418>.A<NE2 13> and .R<LEU 360>.A<HD22 16>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.493 angstroms between nonbonded atoms HD13 and HG1
+-------  .R<ILE 403>.A<HD13 17> and .R<THR 401>.A<HG1 12>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.474 angstroms between nonbonded atoms CZ and OE2
+-------  .R<ARG 400>.A<CZ 16> and .R<GLU 396>.A<OE2 13>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.234 angstroms between nonbonded atoms NH2 and OE2
+-------  .R<ARG 400>.A<NH2 20> and .R<GLU 396>.A<OE2 13>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.268 angstroms between nonbonded atoms H and O
+-------  .R<ALA 340>.A<H 2> and .R<GLY 338>.A<O 7>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.436 angstroms between nonbonded atoms HH and OD1
+-------  .R<TYR 302>.A<HH 15> and .R<ASN 18>.A<OD1 9>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.494 angstroms between nonbonded atoms HH11 and O
+-------  .R<ARG 274>.A<HH11 18> and .R<ASN 18>.A<O 14>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.488 angstroms between nonbonded atoms HG21 and HB3
+-------  .R<VAL 267>.A<HG21 12> and .R<MET 265>.A<HB3 7>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.302 angstroms between nonbonded atoms HG3 and NH1
+-------  .R<MET 265>.A<HG3 10> and .R<ARG 30>.A<NH1 17>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.226 angstroms between nonbonded atoms HE2 and HG13
+-------  .R<MET 265>.A<HE2 14> and .R<VAL 230>.A<HG13 10>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.408 angstroms between nonbonded atoms HG and HE1
+-------  .R<LEU 198>.A<HG 9> and .R<MET 27>.A<HE1 13>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.288 angstroms between nonbonded atoms HE1 and HG11
+-------  .R<MET 186>.A<HE1 13> and .R<VAL 117>.A<HG11 8>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.254 angstroms between nonbonded atoms H and O
+-------  .R<THR 184>.A<H 2> and .R<LEU 182>.A<O 19>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.387 angstroms between nonbonded atoms HB3 and HB3
+-------  .R<ALA 180>.A<HB3 8> and .R<ASP 177>.A<HB3 7>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.284 angstroms between nonbonded atoms HZ and NZ
+-------  .R<PHE 175>.A<HZ 14> and .R<LYS 155>.A<NZ 17>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 0.925 angstroms between nonbonded atoms HZ and HZ1
+-------  .R<PHE 175>.A<HZ 14> and .R<LYS 155>.A<HZ1 18>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.442 angstroms between nonbonded atoms HZ and HZ2
+-------  .R<PHE 175>.A<HZ 14> and .R<LYS 155>.A<HZ2 19>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.302 angstroms between nonbonded atoms NE and CB
+-------  .R<ARG 167>.A<NE 14> and .R<SER 161>.A<CB 5>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 0.819 angstroms between nonbonded atoms NE and HB2
+-------  .R<ARG 167>.A<NE 14> and .R<SER 161>.A<HB2 6>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.416 angstroms between nonbonded atoms HE and HA
+-------  .R<ARG 167>.A<HE 15> and .R<SER 161>.A<HA 4>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.233 angstroms between nonbonded atoms HE and HB2
+-------  .R<ARG 167>.A<HE 15> and .R<SER 161>.A<HB2 6>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.137 angstroms between nonbonded atoms CZ and CB
+-------  .R<ARG 167>.A<CZ 16> and .R<SER 161>.A<CB 5>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.005 angstroms between nonbonded atoms CZ and OG
+-------  .R<ARG 167>.A<CZ 16> and .R<SER 161>.A<OG 8>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.083 angstroms between nonbonded atoms NH1 and OG
+-------  .R<ARG 167>.A<NH1 17> and .R<SER 161>.A<OG 8>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.500 angstroms between nonbonded atoms NH1 and HG
+-------  .R<ARG 167>.A<NH1 17> and .R<SER 161>.A<HG 9>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.140 angstroms between nonbonded atoms HH12 and O
+-------  .R<ARG 167>.A<HH12 19> and .R<GLU 158>.A<O 15>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.250 angstroms between nonbonded atoms NH2 and N
+-------  .R<ARG 167>.A<NH2 20> and .R<SER 161>.A<N 1>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.451 angstroms between nonbonded atoms NH2 and H
+-------  .R<ARG 167>.A<NH2 20> and .R<SER 161>.A<H 2>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.232 angstroms between nonbonded atoms NH2 and CA
+-------  .R<ARG 167>.A<NH2 20> and .R<SER 161>.A<CA 3>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 0.731 angstroms between nonbonded atoms HH21 and N
+-------  .R<ARG 167>.A<HH21 21> and .R<SER 161>.A<N 1>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.352 angstroms between nonbonded atoms HH21 and H
+-------  .R<ARG 167>.A<HH21 21> and .R<SER 161>.A<H 2>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 0.820 angstroms between nonbonded atoms HH21 and CA
+-------  .R<ARG 167>.A<HH21 21> and .R<SER 161>.A<CA 3>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.331 angstroms between nonbonded atoms HH22 and H
+-------  .R<ARG 167>.A<HH22 22> and .R<SER 161>.A<H 2>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.408 angstroms between nonbonded atoms CG2 and HD22
+-------  .R<ILE 163>.A<CG2 7> and .R<LEU 105>.A<HD22 16>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.179 angstroms between nonbonded atoms HG21 and HD22
+-------  .R<ILE 163>.A<HG21 8> and .R<LEU 105>.A<HD22 16>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.196 angstroms between nonbonded atoms HG22 and HD22
+-------  .R<ILE 163>.A<HG22 9> and .R<LEU 105>.A<HD22 16>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.437 angstroms between nonbonded atoms HD12 and HE2
+-------  .R<ILE 163>.A<HD12 16> and .R<MET 106>.A<HE2 14>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.093 angstroms between nonbonded atoms HD13 and HD21
+-------  .R<ILE 163>.A<HD13 17> and .R<LEU 160>.A<HD21 15>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.489 angstroms between nonbonded atoms H and O
+-------  .R<LEU 160>.A<H 2> and .R<VAL 156>.A<O 16>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.168 angstroms between nonbonded atoms HD22 and HD2
+-------  .R<LEU 153>.A<HD22 16> and .R<HIE 8>.A<HD2 15>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.120 angstroms between nonbonded atoms HD2 and HA
+-------  .R<PRO 134>.A<HD2 3> and .R<THR 133>.A<HA 4>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.435 angstroms between nonbonded atoms H and O
+-------  .R<ILE 126>.A<H 2> and .R<PRO 124>.A<O 14>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.403 angstroms between nonbonded atoms HA and HE3
+-------  .R<MET 106>.A<HA 4> and .R<MET 106>.A<HE3 15>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.322 angstroms between nonbonded atoms H and HG
+-------  .R<TRP 92>.A<H 2> and .R<SER 54>.A<HG 9>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.320 angstroms between nonbonded atoms HG and HG3
+-------  .R<CYS 70>.A<HG 9> and .R<PRO 50>.A<HG3 7>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.406 angstroms between nonbonded atoms HH22 and O
+-------  .R<ARG 66>.A<HH22 22> and .R<VAL 51>.A<O 16>
+
+/lus/eagle/projects/datascience/avasan/envs/ambertools_conda_env/bin/teLeap: Warning!
+Close contact of 1.412 angstroms between nonbonded atoms H and HE2
+-------  .R<VAL 43>.A<H 2> and .R<HIE 36>.A<HE2 13>
+Checking parameters for unit 'system'.
+Checking for bond parameters.
+Checking for angle parameters.
+check:  Warnings: 62
+Unit is OK.
+> # Solvate
+>                                  solvateBox system OPCBOX 10
+  Solute vdw bounding box:              96.327 65.787 92.872
+  Total bounding box for atom centers:  116.327 85.787 112.872
+  Solvent unit box:                     18.865 18.478 19.006
+The number of boxes:  x= 7  y= 5  z= 6
+  Total vdw box size:                   119.396 88.861 115.810 angstroms.
+  Volume: 1228699.318 A^3 
+  Total mass 630017.672 amu,  Density 0.851 g/cc
+  Added 31358 residues.
+>                                  # Neutralise
+>                                  #addions2 system Cl- 0 
+>                                  #addions2 system Na+ 0 
+                                 quit
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 66; Notes = 0.

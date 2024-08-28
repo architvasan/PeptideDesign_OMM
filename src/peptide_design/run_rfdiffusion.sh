@@ -22,7 +22,7 @@ conda activate /lus/eagle/projects/datascience/avasan/envs/SE3nv
 
 echo "${size_ref}"
 
-echo "CUDA_VISIBLE_DEVICES=0 $src_dir/run_inference.py inference.output_prefix=${output_prefix}.0 inference.input_pdb=${input_pdb} "contigmap.contigs=[A1-${size_ref}/0 ${min_design}-${max_design}]" "ppi.hotspot_res=[${hotspot_res}]" inference.num_designs=$num_designs denoiser.noise_scale_ca=0 denoiser.noise_scale_frame=0 > logs/${outfile}.0.log 2> logs/${outfile}.0.err &"
+echo "CUDA_VISIBLE_DEVICES=$device $src_dir/run_inference.py inference.output_prefix=${output_prefix}.0 inference.input_pdb=${input_pdb} "contigmap.contigs=[A1-${size_ref}/0 ${min_design}-${max_design}]" "ppi.hotspot_res=[${hotspot_res}]" inference.num_designs=$num_designs denoiser.noise_scale_ca=0 denoiser.noise_scale_frame=0 > logs/${outfile}.0.log 2> logs/${outfile}.0.err &"
 
 
 # Try a command
