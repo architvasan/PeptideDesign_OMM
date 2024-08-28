@@ -12,9 +12,12 @@
  5. Analyze coordinates of interest during simulation (e.g. ANCA to analyze IDRs)
     `python src/analyze/heiranca_dihedrals.py -h`
  6. Construct MSM to identify metastable protein conformations
-    `python src/analyze/msm/preprocess.py -h`
-    `python src/analyze/msm/msm.py -h`
-    `python src/analyze/msm/metastable_trajs.py -h`
+    ```python
+    python src/analyze/msm/preprocess.py -h
+    python src/analyze/msm/msm.py -h
+    python src/analyze/msm/metastable_trajs.py -h
+
+    ```
 
  7. ID residue hotspots for each conformation
     `python src/analyze/contacts_A_B.py -h`
