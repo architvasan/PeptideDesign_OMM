@@ -29,4 +29,6 @@
  8. For each protein of interest conformation, follow RFDiffusion protocol to generate novel binding peptides.
     - Scripts in `src/peptide_design`
     - Follow instructions in https://github.com/RosettaCommons/RFdiffusion.git for installation + running
+ 9. Next:
+    - Implement free energy simulations to evaluate binding energy of each generated peptide
 
