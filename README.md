@@ -17,5 +17,8 @@
     `python src/analyze/msm/metastable_trajs.py -h`
 
  7. ID residue hotspots for each conformation
+    `python src/analyze/contacts_A_B.py -h`
  8. For each protein of interest conformation, follow RFDiffusion protocol to generate novel binding peptides.
+    - Scripts in `src/peptide_design`
+    - Follow instructions in https://github.com/RosettaCommons/RFdiffusion.git for installation + running
 
